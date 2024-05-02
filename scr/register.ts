@@ -7,14 +7,18 @@ export const newRegister = async (
   labId: number,
   projectId: number
 ) => {
-  const result = await db.hoursRegister.create({
-    data: {
-      day,
-      hours,
-      techId,
-      labId,
-      projectId,
-    },
-  });
-  return result;
+  try {
+    const result = await db.hoursRegister.create({
+      data: {
+        day,
+        hours,
+        techId,
+        labId,
+        projectId,
+      },
+    });
+    return result;
+  } catch (e) {
+    return "Error: techId, labId, projectId no válidos no existen";
+  }
 };
