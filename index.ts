@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+/*import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 const result = await prisma.technicians.create({
@@ -7,4 +7,4 @@ const result = await prisma.technicians.create({
         lastName: "DelosPalotes",
     }
 })
-console.log(result);
+console.log(result);*/
