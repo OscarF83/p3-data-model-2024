@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,4 +5,35 @@ generator client {
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
+}
+
+model hoursRegister {
+  hoursRegisterId Int          @id @default(autoincrement())
+  day             String
+  hours           Int
+  techId          Int
+  labId           Int
+  projectId       Int
+  technicians     technicians  @relation(fields: [techId], references: [techId], onDelete: NoAction, onUpdate: NoAction)
+  laboratories    laboratories @relation(fields: [labId], references: [labId], onDelete: NoAction, onUpdate: NoAction)
+  projects        projects     @relation(fields: [projectId], references: [projectId], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model laboratories {
+  labId         Int             @id @default(autoincrement())
+  labName       String
+  hoursRegister hoursRegister[]
+}
+
+model projects {
+  projectId     Int             @id @default(autoincrement())
+  projectName   String
+  hoursRegister hoursRegister[]
+}
+
+model technicians {
+  techId        Int             @id @default(autoincrement())
+  firstName     String
+  lastName      String
+  hoursRegister hoursRegister[]
 }
