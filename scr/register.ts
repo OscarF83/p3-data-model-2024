@@ -19,7 +19,7 @@ export const newRegister = async (
     });
     return result;
   } catch (e) {
-    return "Error: techId, labId, projectId no válidos no existen";
+    return "Error: techId, labId, projectId do not exist, are invalid";
   }
 };
 export const findRegisterByTechId = async (
@@ -33,6 +33,34 @@ export const findRegisterByTechId = async (
     });
     return result;
   } catch (e) {
-    return "Error: techId no válido no existe";
+    return "Error: techId entered does not exist";
+  }
+};
+export const findRegisterByDay = async (
+  day: string,
+) => {
+  try {
+    const result = await db.hoursRegister.findMany({
+      where: {
+        day,
+      },
+    });
+    return result;
+  } catch (e) {
+    return "Error: techId does not exist";
+  }
+};
+export const deleteRegisterById = async (
+  hoursRegisterId: number,
+) => {
+  try {
+    const result = await db.hoursRegister.delete({
+      where: {
+        hoursRegisterId,
+      },
+    });
+    return result;
+  } catch (e) {
+    return "Error: hoursRegisteredhId does not exist";
   }
 };
