@@ -3,6 +3,7 @@
 # my ignores
 
 sqlite3.exe
+*.db
 
 # Logs
 
