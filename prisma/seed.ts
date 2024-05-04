@@ -2,37 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 const db = new PrismaClient();
 
-const technician1 = await db.technicians.create({
-    data: {
-      firstName: "Juan",
-      lastName: "Alcaraz",
-    },
-  });
-console.log(`Created technician "${technician1}" with id "${technician1.techId}"`);
-
-const technician2 = await db.technicians.create({
-    data: {
-      firstName: "Carlos",
-      lastName: "Monte",
-    },
-  });
-console.log(`Created technician "${technician2}" with id "${technician2.techId}"`);
-
-const technician3 = await db.technicians.create({
-    data: {
-      firstName: "Antonio",
-      lastName: "Molina",
-    },
-  });
-console.log(`Created technician "${technician3}" with id "${technician3.techId}"`);
-
-const technician4 = await db.technicians.create({
-    data: {
-      firstName: "Cristina",
-      lastName: "Gonzalez",
-    },
-  });
-console.log(`Created technician "${technician4}" with id "${technician4.techId}"`);
+try {
 
 const laboratory1 = await db.laboratories.create({
     data: {
@@ -75,6 +45,38 @@ const project3 = await db.projects.create({
     },
   });
 console.log(`Created project "${project3}" with id "${project3.projectId}"`);
+
+const technician1 = await db.technicians.create({
+  data: {
+    firstName: "Juan",
+    lastName: "Alcaraz",
+  },
+});
+console.log(`Created technician "${technician1}" with id "${technician1.techId}"`);
+
+const technician2 = await db.technicians.create({
+  data: {
+    firstName: "Carlos",
+    lastName: "Monte",
+  },
+});
+console.log(`Created technician "${technician2}" with id "${technician2.techId}"`);
+
+const technician3 = await db.technicians.create({
+  data: {
+    firstName: "Antonio",
+    lastName: "Molina",
+  },
+});
+console.log(`Created technician "${technician3}" with id "${technician3.techId}"`);
+
+const technician4 = await db.technicians.create({
+  data: {
+    firstName: "Cristina",
+    lastName: "Gonzalez",
+  },
+});
+console.log(`Created technician "${technician4}" with id "${technician4.techId}"`);
 
 const register1 = await db.hoursRegister.create({
     data: {
@@ -141,3 +143,7 @@ const register6 = await db.hoursRegister.create({
     },
   });
 console.log(`Created register with id "${register6.hoursRegisterId}"`);
+} catch (e) {
+  console.error(`Error: Database. Remember that seed.ts only can be executed one time.`);
+  process.exit(1);
+}

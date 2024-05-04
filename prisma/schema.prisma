@@ -27,7 +27,7 @@ model laboratories {
 
 model projects {
   projectId     Int             @id @default(autoincrement())
-  projectName   String
+  projectName   String          @unique
   hoursRegister hoursRegister[]
 }
 

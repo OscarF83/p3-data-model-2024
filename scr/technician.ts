@@ -1,6 +1,7 @@
 import { db } from "./db";
 
 export const newTechnician = async (firstName: string, lastName: string) => {
+  try {
   const result = await db.technicians.create({
     data: {
       firstName,
@@ -8,8 +9,12 @@ export const newTechnician = async (firstName: string, lastName: string) => {
     },
   });
   return result;
+} catch (e) {
+  return "Error with database"
+}
 };
 export const findByTechnician = async (firstName: string) => {
+  try {
   const result = await db.technicians.findMany({
     select:{
       firstName: true,
@@ -28,4 +33,7 @@ export const findByTechnician = async (firstName: string) => {
     },
   });
   return result;
+} catch (e) {
+  return "Error with data base"
+}
 };
