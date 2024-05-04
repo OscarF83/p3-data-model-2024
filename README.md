@@ -35,6 +35,10 @@ Ejecutar el siguiente comando:
 
 bun prisma/seed.ts
 
+o también:
+
+bunx prisma db seed
+
 ## Script newTech.ts
 
 Introduce nuevos technicians en la base
