@@ -3,7 +3,7 @@
 # my ignores
 
 sqlite3.exe
-*.db
+prisma/dev.db
 
 # Logs
 

@@ -1,4 +1,4 @@
-import { findRegisterByTechId, newRegister } from "../scr/register";
+import { findRegisterByTechId} from "../scr/register";
 
 if (process.argv.length < 3) {
   console.error(`Usage: bun findRegByTechId.ts <techId>`);

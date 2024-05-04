@@ -22,9 +22,7 @@ export const newRegister = async (
     return "Error: techId, labId, projectId do not exist, are invalid";
   }
 };
-export const findRegisterByTechId = async (
-  techId: number,
-) => {
+export const findRegisterByTechId = async (techId: number) => {
   try {
     const result = await db.hoursRegister.findMany({
       where: {
@@ -36,9 +34,7 @@ export const findRegisterByTechId = async (
     return "Error: techId entered does not exist";
   }
 };
-export const findRegisterByDay = async (
-  day: string,
-) => {
+export const findRegisterByDay = async (day: string) => {
   try {
     const result = await db.hoursRegister.findMany({
       where: {
@@ -50,9 +46,7 @@ export const findRegisterByDay = async (
     return "Error: techId does not exist";
   }
 };
-export const deleteRegisterById = async (
-  hoursRegisterId: number,
-) => {
+export const deleteRegisterById = async (hoursRegisterId: number) => {
   try {
     const result = await db.hoursRegister.delete({
       where: {
@@ -62,5 +56,37 @@ export const deleteRegisterById = async (
     return result;
   } catch (e) {
     return "Error: hoursRegisteredhId does not exist";
+  }
+};
+export const findRegisterAllNamesByTechId = async (techId: number) => {
+  try {
+    const result = await db.hoursRegister.findMany({
+      select: {
+        day: true,
+        hours: true,
+        technicians: {
+          select: {
+            firstName: true,
+            lastName: true,
+          },
+        },
+        laboratories: {
+          select: {
+            labName: true,
+          },
+        },
+        projects: {
+          select: {
+            projectName: true,
+          },
+        },
+      },
+      where: {
+        techId,
+      },
+    });
+    return result;
+  } catch (e) {
+    return "Error: techId does not exist";
   }
 };

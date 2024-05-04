@@ -1,4 +1,4 @@
-import { findRegisterByDay, newRegister } from "../scr/register";
+import { findRegisterByDay } from "../scr/register";
 
 if (process.argv.length < 3) {
   console.error(`Usage: bun findRegByDay.ts <day> as <DD-MM-YYYY>`);
